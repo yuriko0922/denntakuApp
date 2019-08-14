@@ -47,10 +47,10 @@ class ViewController: UIViewController {
     
     //記号系ボタン紐ずけ
     @IBAction func kigouBottun(_ sender: UIButton) {
-        if kekkaLabel.text != "" && sender.tag != 11 && sender.tag != 16{
-            if putNum {
+        if kekkaLabel.text != "" && sender.tag != 11 && sender.tag != 16 {
+           
             beforNum = Double(kekkaLabel.text!)!
-            }
+            
             if sender.tag == 12{
                 kekkaLabel.text = "÷"
             } else if sender.tag == 13 {
@@ -74,14 +74,12 @@ class ViewController: UIViewController {
                  kekkaLabel.text = String(beforNum + nowNumber)
             }
             //クリアボタン押された時の処理
-            
+        } else if sender.tag == 11 {
+            kekkaLabel.text = ""
+            nowNumber = 0
+            kigou = 0
         }
         
-        
-        
-        
-        
     }
-    
 }
 
