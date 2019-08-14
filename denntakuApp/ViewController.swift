@@ -27,7 +27,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     //数字のボタンを押した時
@@ -41,13 +40,12 @@ class ViewController: UIViewController {
             kekkaLabel.text = kekkaLabel.text! + String(sender.tag)
             nowNumber = Double(kekkaLabel.text!)!
         }
-        
     }
     
     
     //記号系ボタン紐ずけ
     @IBAction func kigouBottun(_ sender: UIButton) {
-        if kekkaLabel.text != "" && sender.tag != 11 && sender.tag != 16 {
+        if kekkaLabel.text != "" {
            
             beforNum = Double(kekkaLabel.text!)!
             
@@ -73,13 +71,55 @@ class ViewController: UIViewController {
             } else if kigou == 15 {
                  kekkaLabel.text = String(beforNum + nowNumber)
             }
-            //クリアボタン押された時の処理
-        } else if sender.tag == 11 {
-            kekkaLabel.text = ""
-            nowNumber = 0
-            kigou = 0
         }
-        
     }
+    
+    
+    @IBAction func clearButton(_ sender: UIButton) {
+        kekkaLabel.text = ""
+        nowNumber = 0
+        kigou = 0
+    }
+    
+    
+    @IBAction func equalButton(_ sender: UIButton) {
+        
+            if kigou == 12 {
+                //小数点以下が０の時０を消す処理
+                let seisuu = String(beforNum / nowNumber).components(separatedBy: ".")
+                if seisuu[1] == "0" {
+                    kekkaLabel.text = seisuu[0]
+                    //少数の時の処理
+                } else {
+                    kekkaLabel.text = String(beforNum / nowNumber)
+                }
+            } else if kigou == 13 {
+                //小数点以下が０の時０を消す処理
+                let seisuu = String(beforNum * nowNumber).components(separatedBy: ".")
+                if seisuu[1] == "0" {
+                    kekkaLabel.text = seisuu[0]
+                } else {
+                    //少数の時の処理
+                    kekkaLabel.text = String(beforNum * nowNumber)
+                }
+            } else if kigou == 14 {
+                let seisuu = String(beforNum - nowNumber).components(separatedBy: ".")
+                if seisuu[1] == "0" {
+                    kekkaLabel.text = seisuu[0]
+                    //少数の時の処理
+                } else {
+                    kekkaLabel.text = String(beforNum - nowNumber)
+                }
+            } else if kigou == 15 {
+                //小数点以下が０の時０を消す処理
+                let seisuu = String(beforNum + nowNumber).components(separatedBy: ".")
+                if seisuu[1] == "0" {
+                    kekkaLabel.text = seisuu[0]
+                } else {
+                    kekkaLabel.text = String(beforNum + nowNumber)
+                }
+            }
+    }
+    
 }
 
