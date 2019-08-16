@@ -87,7 +87,7 @@ class ViewController: UIViewController {
             let seisuu = String(beforNum / nowNumber).components(separatedBy: ".")
             if seisuu.count > 1 && seisuu[1] == "0" {
                 kekkaLabel.text = seisuu[0]
-                // 少数の時の処理
+                // 小数の時の処理
             } else {
                 kekkaLabel.text = String(beforNum / nowNumber)
             }
@@ -107,7 +107,7 @@ class ViewController: UIViewController {
             let seisuu = String(beforNum - nowNumber).components(separatedBy: ".")
             if seisuu[1] == "0" {
                 kekkaLabel.text = seisuu[0]
-                // 少数の時の処理
+                // 小数の時の処理
             } else {
                 kekkaLabel.text = String(beforNum - nowNumber)
             }
@@ -117,7 +117,7 @@ class ViewController: UIViewController {
             let seisuu = String(beforNum + nowNumber).components(separatedBy: ".")
             if seisuu[1] == "0" {
                 kekkaLabel.text = seisuu[0]
-                // 少数の時の処理
+                // 小数の時の処理
             } else {
                 kekkaLabel.text = String(beforNum + nowNumber)
             }
